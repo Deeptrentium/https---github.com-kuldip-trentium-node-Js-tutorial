@@ -6,4 +6,6 @@
 
 */ 
 
+require('./add')
+
 console.log('hello');
