@@ -6,6 +6,10 @@
 
 */ 
 
-require('./add')
+const add = require('./add');
+
+const sum1 = add(2,3)
+console.log(sum1)
 
 console.log('hello');
+
