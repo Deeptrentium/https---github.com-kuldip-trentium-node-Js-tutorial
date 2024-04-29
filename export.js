@@ -17,3 +17,7 @@ exports.add =(a,b)=>{
 
 
 // module.exports = {add,subtract}
+
+//here exports = {
+  // add , subtract
+// } -->will not assign to the module exports only function first parameter exports 
