@@ -76,16 +76,28 @@
 // require('./callback')
 
 //for a non blocking execution 
-const eventEmitter = require('events')
+// const eventEmitter = require('events')
 
-const emitter = new eventEmitter()
+// const emitter = new eventEmitter()
 
-emitter.on('btn-clicked',(name)=>{
-  console.log('button clicked by',name)
+// emitter.on('btn-clicked',(name)=>{
+//   console.log('button clicked by',name)
+// })
+
+// emitter.on('btn-clicked',()=>{
+//   console.log('further will going in api')
+// })
+// console.log('hello ') //non blocking execution
+// emitter.emit('btn-clicked','kuldip')
+
+const PizzaShop = require('./eventsmodule')
+const Drink = require('./extraeventsmodule')
+
+const pizzaShop = new PizzaShop()
+const drink = new Drink()
+pizzaShop.on('order',(size , toppings)=>{
+  console.log('order placed with' , size , toppings )
+  drink.complymentoryDrink(size)
 })
-
-emitter.on('btn-clicked',()=>{
-  console.log('further will going in api')
-})
-console.log('hello ') //non blocking execution
-emitter.emit('btn-clicked','kuldip')
+pizzaShop.order('large' , 'panner')
+pizzaShop.displayCurrentOrder()
