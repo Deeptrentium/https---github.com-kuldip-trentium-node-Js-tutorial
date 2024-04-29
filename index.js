@@ -39,36 +39,38 @@
 // console.log(data.name)
 
 
-const path = require('path')
+// const path = require('path')
 
-console.log(__dirname)
-console.log(__filename)
+// console.log(__dirname)
+// console.log(__filename)
 
-console.log(path.basename(__filename))
+// console.log(path.basename(__filename))
 
-console.log(path.extname(__filename))
+// console.log(path.extname(__filename))
 
-console.log(path.parse(__filename))
+// console.log(path.parse(__filename))
 
-console.log(path.format(path.parse(__filename)))
+// console.log(path.format(path.parse(__filename)))
 
-console.log(path.isAbsolute(__filename)) //true
+// console.log(path.isAbsolute(__filename)) //true
 
-console.log(path.isAbsolute('./data.json'))//false ./ is relative
-
-
-console.log(path.join('path1','path2',"index2"))
-
-console.log(path.join('/path1','path2',"index2"))
-
-console.log(path.join('/path1','///path2',"index2"))
-
-console.log(path.join('/path1','///path2',"../index2"))
-console.log(path.join(__dirname,"index.js"))
+// console.log(path.isAbsolute('./data.json'))//false ./ is relative
 
 
-console.log(path.resolve('folder1','folder2')) //->is not starts with / then return the dirnme 
+// console.log(path.join('path1','path2',"index2"))
 
-console.log(path.resolve('/folder1','folder2'))
+// console.log(path.join('/path1','path2',"index2"))
 
-console.log(path.resolve('/folder1','//folder2')) //->resolve with consider with root 
+// console.log(path.join('/path1','///path2',"index2"))
+
+// console.log(path.join('/path1','///path2',"../index2"))
+// console.log(path.join(__dirname,"index.js"))
+
+
+// console.log(path.resolve('folder1','folder2')) //->is not starts with / then return the dirnme 
+
+// console.log(path.resolve('/folder1','folder2'))
+
+// console.log(path.resolve('/folder1','//folder2')) //->resolve with consider with root 
+
+require('./callback')
