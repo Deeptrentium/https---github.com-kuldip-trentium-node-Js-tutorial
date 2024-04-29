@@ -14,17 +14,22 @@
 // console.log('hello');
 
 
-const newCache = require('./modulecache')
+// const newCache = require('./modulecache')
 
-console.log(newCache.getName());
+// console.log(newCache.getName());
 
-newCache.setName('bhargav');
+// newCache.setName('bhargav');
 
-console.log(newCache.getName())
+// console.log(newCache.getName())
 
-const newSuperCache = require('./modulecache') //here if already imported then use the cache value
+// const newSuperCache = require('./modulecache') //here if already imported then use the cache value
 
-console.log(newSuperCache.getName()) 
+// console.log(newSuperCache.getName()) 
 
 
 //output ->kuldip , bhargav , bhargav
+
+
+const math = require('./export')
+
+console.log(math.add(2,3))
