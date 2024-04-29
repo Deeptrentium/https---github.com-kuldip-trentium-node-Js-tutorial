@@ -21,3 +21,6 @@ exports.add =(a,b)=>{
 //here exports = {
   // add , subtract
 // } -->will not assign to the module exports only function first parameter exports 
+
+
+//to use react import export the file extension is mjs
