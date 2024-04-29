@@ -90,14 +90,20 @@
 // console.log('hello ') //non blocking execution
 // emitter.emit('btn-clicked','kuldip')
 
-const PizzaShop = require('./eventsmodule')
-const Drink = require('./extraeventsmodule')
+// const PizzaShop = require('./eventsmodule')
+// const Drink = require('./extraeventsmodule')
 
-const pizzaShop = new PizzaShop()
-const drink = new Drink()
-pizzaShop.on('order',(size , toppings)=>{
-  console.log('order placed with' , size , toppings )
-  drink.complymentoryDrink(size)
-})
-pizzaShop.order('large' , 'panner')
-pizzaShop.displayCurrentOrder()
+// const pizzaShop = new PizzaShop()
+// const drink = new Drink()
+// pizzaShop.on('order',(size , toppings)=>{
+//   console.log('order placed with' , size , toppings )
+//   drink.complymentoryDrink(size)
+// })
+// pizzaShop.order('large' , 'panner')
+// pizzaShop.displayCurrentOrder()
+
+const buffer = new Buffer.from('Kuldip')
+buffer.write('pandyajikaladka') // ->return only buffer from length data 
+console.log(buffer.toString())
+console.log(buffer.toJSON())
+console.log(buffer)
