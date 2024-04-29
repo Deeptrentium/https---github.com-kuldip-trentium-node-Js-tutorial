@@ -6,10 +6,25 @@
 
 */ 
 
-const add = require('./add');
+// const add = require('./add');
 
-const sum1 = add(2,3)
-console.log(sum1)
+// const sum1 = add(2,3)
+// console.log(sum1)
 
-console.log('hello');
+// console.log('hello');
 
+
+const newCache = require('./modulecache')
+
+console.log(newCache.getName());
+
+newCache.setName('bhargav');
+
+console.log(newCache.getName())
+
+const newSuperCache = require('./modulecache') //here if already imported then use the cache value
+
+console.log(newSuperCache.getName()) 
+
+
+//output ->kuldip , bhargav , bhargav
