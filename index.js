@@ -73,4 +73,19 @@
 
 // console.log(path.resolve('/folder1','//folder2')) //->resolve with consider with root 
 
-require('./callback')
+// require('./callback')
+
+//for a non blocking execution 
+const eventEmitter = require('events')
+
+const emitter = new eventEmitter()
+
+emitter.on('btn-clicked',(name)=>{
+  console.log('button clicked by',name)
+})
+
+emitter.on('btn-clicked',()=>{
+  console.log('further will going in api')
+})
+console.log('hello ') //non blocking execution
+emitter.emit('btn-clicked','kuldip')
