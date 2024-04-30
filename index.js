@@ -184,23 +184,29 @@ const data = {
 //   console.log('server running on 3000')
 // })
 
-const server = http.createServer((req,res)=>{
-  if(req.url === '/'){
-    res.writeHead(200)
-    res.end('Home Page')
-  }
-  else if(req.url === '/about'){
-    res.writeHead(200)
-    res.end('about page')
-  }
-  else if(req.url === '/api'){
-    res.writeHead(200)
-    res.end(JSON.stringify(data))
-  }
-  else{
-    res.writeHead(404)
-    res.end('page not found')
-  }
-})
+// const server = http.createServer((req,res)=>{
+//   if(req.url === '/'){
+//     res.writeHead(200)
+//     res.end('Home Page')
+//   }
+//   else if(req.url === '/about'){
+//     res.writeHead(200)
+//     res.end('about page')
+//   }
+//   else if(req.url === '/api'){
+//     res.writeHead(200)
+//     res.end(JSON.stringify(data))
+//   }
+//   else{
+//     res.writeHead(404)
+//     res.end('page not found')
+//   }
+// })
 
-server.listen(3000 , ()=>{console.log('server running on port 3000')})
+// server.listen(3000 , ()=>{console.log('server running on port 3000')})
+
+
+//->node handle the async task by the library libUV 
+//->in lib UV there is thread pool has 4 thread by default
+
+//->https.request does not use the thread pool
