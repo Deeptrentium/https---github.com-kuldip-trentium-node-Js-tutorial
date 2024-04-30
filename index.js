@@ -157,16 +157,22 @@
 // })
 
 const http = require('http')
-
+const fs = require('fs')
 const data = {
   name:'kuldip',
   age:21
 }
 
 const server = http.createServer((req,res)=>{
-  res.writeHead(200,{'Content-Type':'application/json'})
-  // res.end('hello is response')
-  res.end(JSON.stringify(data))
+  const name = 'bhargav'
+  res.writeHead(200,{'Content-Type':'text/html'})
+  let filedata = fs.readFileSync('./index.html','utf-8')
+  filedata =  filedata.replace('{{name}}', name)
+  res.end(filedata)
+  // res.end('<h1>hello is response</h1>')
+  // res.end(filedata)
+  // res.end(JSON.stringify(data))
+  // fs.createReadStream('./index.html').pipe(res)
 })
 
 
