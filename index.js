@@ -135,23 +135,45 @@
 // //fs promises module
 // fsPromise.readFile('./new.tsx','utf-8').then(data=>console.log(data)).catch(error=>console.log(error))
 
-const fs = require('fs')
-const zlip = require('zlib')
+// const fs = require('fs')
+// const zlip = require('zlib')
 
-const gzip  = zlip.createGzip()
-
-
-const readableStream = fs.createReadStream('./fs.txt',{
-  encoding:'utf-8',
-  highWaterMark:3
-})
+// const gzip  = zlip.createGzip()
 
 
-const writableStream = fs.createWriteStream('./fs2.txt')
-readableStream.pipe(writableStream)
-readableStream.pipe(gzip).pipe(fs.WriteStream('fs2.txt.gz'))
+// const readableStream = fs.createReadStream('./fs.txt',{
+//   encoding:'utf-8',
+//   highWaterMark:3
+// })
+
+
+// const writableStream = fs.createWriteStream('./fs2.txt')
+// readableStream.pipe(writableStream)
+// readableStream.pipe(gzip).pipe(fs.WriteStream('fs2.txt.gz'))
 
 // readableStream.on('data',(chunk)=>{
 //   console.log(chunk)
 //   writableStream.write(chunk)
 // })
+
+const http = require('http')
+
+const data = {
+  name:'kuldip',
+  age:21
+}
+
+const server = http.createServer((req,res)=>{
+  res.writeHead(200,{'Content-Type':'application/json'})
+  // res.end('hello is response')
+  res.end(JSON.stringify(data))
+})
+
+
+
+//we can not send object in response 
+//to achieve these we have send data in JSON stringify format 
+
+server.listen(3000 , ()=>{
+  console.log('server running on 3000')
+})
