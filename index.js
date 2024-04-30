@@ -136,15 +136,22 @@
 // fsPromise.readFile('./new.tsx','utf-8').then(data=>console.log(data)).catch(error=>console.log(error))
 
 const fs = require('fs')
+const zlip = require('zlib')
+
+const gzip  = zlip.createGzip()
+
 
 const readableStream = fs.createReadStream('./fs.txt',{
   encoding:'utf-8',
   highWaterMark:3
 })
 
-const writableStream = fs.createWriteStream('./fs2.txt')
 
-readableStream.on('data',(chunk)=>{
-  console.log(chunk)
-  writableStream.write(chunk)
-})
+const writableStream = fs.createWriteStream('./fs2.txt')
+readableStream.pipe(writableStream)
+readableStream.pipe(gzip).pipe(fs.WriteStream('fs2.txt.gz'))
+
+// readableStream.on('data',(chunk)=>{
+//   console.log(chunk)
+//   writableStream.write(chunk)
+// })
