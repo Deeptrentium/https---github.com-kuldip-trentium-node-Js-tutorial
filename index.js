@@ -108,29 +108,43 @@
 // console.log(buffer.toJSON())
 // console.log(buffer)
 
-const {error} = require('console')
+// const {error} = require('console')
+// const fs = require('fs')
+
+// const fsPromise = require('fs/promises')
+
+// console.log(fs.readFileSync('./fs.txt','utf-8')) //->for read file synchronously
+
+// console.log(fs.readFile('./fs.txt','utf-8',(error,data)=>{
+//   if(error)
+//   {
+//     console.log(error)
+//   }
+//   else{
+//     console.log(data)
+//   }
+// })) //->read file async
+
+
+// console.log(fs.writeFileSync('new.txt','hello in new file'))
+
+// console.log(fs.writeFile('./new.txt' , 'hello in existing file',{flag:'a'},(error)=>{
+//   console.log(error)
+// })) //enter data in file 
+
+// //fs promises module
+// fsPromise.readFile('./new.tsx','utf-8').then(data=>console.log(data)).catch(error=>console.log(error))
+
 const fs = require('fs')
 
-const fsPromise = require('fs/promises')
+const readableStream = fs.createReadStream('./fs.txt',{
+  encoding:'utf-8',
+  highWaterMark:3
+})
 
-console.log(fs.readFileSync('./fs.txt','utf-8')) //->for read file synchronously
+const writableStream = fs.createWriteStream('./fs2.txt')
 
-console.log(fs.readFile('./fs.txt','utf-8',(error,data)=>{
-  if(error)
-  {
-    console.log(error)
-  }
-  else{
-    console.log(data)
-  }
-})) //->read file async
-
-
-console.log(fs.writeFileSync('new.txt','hello in new file'))
-
-console.log(fs.writeFile('./new.txt' , 'hello in existing file',{flag:'a'},(error)=>{
-  console.log(error)
-})) //enter data in file 
-
-//fs promises module
-fsPromise.readFile('./new.tsx','utf-8').then(data=>console.log(data)).catch(error=>console.log(error))
+readableStream.on('data',(chunk)=>{
+  console.log(chunk)
+  writableStream.write(chunk)
+})
