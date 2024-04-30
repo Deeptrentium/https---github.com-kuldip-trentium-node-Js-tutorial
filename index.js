@@ -102,8 +102,35 @@
 // pizzaShop.order('large' , 'panner')
 // pizzaShop.displayCurrentOrder()
 
-const buffer = new Buffer.from('Kuldip')
-buffer.write('pandyajikaladka') // ->return only buffer from length data 
-console.log(buffer.toString())
-console.log(buffer.toJSON())
-console.log(buffer)
+// const buffer = new Buffer.from('Kuldip')
+// buffer.write('pandyajikaladka') // ->return only buffer from length data 
+// console.log(buffer.toString())
+// console.log(buffer.toJSON())
+// console.log(buffer)
+
+const {error} = require('console')
+const fs = require('fs')
+
+const fsPromise = require('fs/promises')
+
+console.log(fs.readFileSync('./fs.txt','utf-8')) //->for read file synchronously
+
+console.log(fs.readFile('./fs.txt','utf-8',(error,data)=>{
+  if(error)
+  {
+    console.log(error)
+  }
+  else{
+    console.log(data)
+  }
+})) //->read file async
+
+
+console.log(fs.writeFileSync('new.txt','hello in new file'))
+
+console.log(fs.writeFile('./new.txt' , 'hello in existing file',{flag:'a'},(error)=>{
+  console.log(error)
+})) //enter data in file 
+
+//fs promises module
+fsPromise.readFile('./new.tsx','utf-8').then(data=>console.log(data)).catch(error=>console.log(error))
