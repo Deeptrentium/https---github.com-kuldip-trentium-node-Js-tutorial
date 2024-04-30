@@ -157,29 +157,50 @@
 // })
 
 const http = require('http')
-const fs = require('fs')
+// const fs = require('fs')
 const data = {
   name:'kuldip',
   age:21
 }
 
-const server = http.createServer((req,res)=>{
-  const name = 'bhargav'
-  res.writeHead(200,{'Content-Type':'text/html'})
-  let filedata = fs.readFileSync('./index.html','utf-8')
-  filedata =  filedata.replace('{{name}}', name)
-  res.end(filedata)
-  // res.end('<h1>hello is response</h1>')
-  // res.end(filedata)
-  // res.end(JSON.stringify(data))
-  // fs.createReadStream('./index.html').pipe(res)
-})
+// const server = http.createServer((req,res)=>{
+//   const name = 'bhargav'
+//   res.writeHead(200,{'Content-Type':'text/html'})
+//   let filedata = fs.readFileSync('./index.html','utf-8')
+//   filedata =  filedata.replace('{{name}}', name)
+//   res.end(filedata)
+//   // res.end('<h1>hello is response</h1>')
+//   // res.end(filedata)
+//   // res.end(JSON.stringify(data))
+//   // fs.createReadStream('./index.html').pipe(res)
+// })
 
 
 
 //we can not send object in response 
 //to achieve these we have send data in JSON stringify format 
 
-server.listen(3000 , ()=>{
-  console.log('server running on 3000')
+// server.listen(3000 , ()=>{
+//   console.log('server running on 3000')
+// })
+
+const server = http.createServer((req,res)=>{
+  if(req.url === '/'){
+    res.writeHead(200)
+    res.end('Home Page')
+  }
+  else if(req.url === '/about'){
+    res.writeHead(200)
+    res.end('about page')
+  }
+  else if(req.url === '/api'){
+    res.writeHead(200)
+    res.end(JSON.stringify(data))
+  }
+  else{
+    res.writeHead(404)
+    res.end('page not found')
+  }
 })
+
+server.listen(3000 , ()=>{console.log('server running on port 3000')})
